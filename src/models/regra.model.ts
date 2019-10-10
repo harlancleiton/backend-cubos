@@ -39,9 +39,6 @@ export class RegraModel {
       (regraSalva: Regra, i: number | string) => {
         if (regraSalva.id === id) {
           const index = Number(i);
-          console.log(index);
-          console.log(this.path);
-          console.log(this.path[index]);
           db.delete(`${this.path}[${index}]`);
           return true;
         } else {

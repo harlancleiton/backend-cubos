@@ -21,6 +21,16 @@ class RegrasController {
         .send({ error: 'Falha na comunicação com banco de dados' });
     }
   }
+
+  public async destroy(req: Request, res: Response) {
+    const { id } = req.params;
+    const regra = regraModel.delete(id);
+    if (regra) {
+      res.status(204).send();
+    } else {
+      res.status(404).send();
+    }
+  }
 }
 
 export default new RegrasController();

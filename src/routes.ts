@@ -5,5 +5,6 @@ const routes = Router();
 
 routes.post('/regras', regrasController.store);
 routes.get('/regras', regrasController.index);
+routes.delete('/regras/:id', regrasController.destroy);
 
 export default routes;
