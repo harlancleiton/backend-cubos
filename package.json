@@ -6,25 +6,44 @@
   "license": "MIT",
   "scripts": {
     "dev:build": "node_modules/.bin/tsc -w",
-    "dev": "node_modules/.bin/nodemon --delay 3 dist/server.js"
+    "dev": "node_modules/.bin/nodemon --delay 3 dist/server.js",
+    "test": "NODE_ENV=test jest"
   },
   "repository": {
     "url": "https://github.com/harlancleiton/backend-cubos",
     "type": "git"
   },
   "dependencies": {
+    "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "moment": "^2.24.0",
     "node-json-db": "^1.0.1",
     "uuid": "^3.3.3"
   },
   "devDependencies": {
+    "@types/dotenv": "^6.1.1",
     "@types/express": "^4.17.1",
+    "@types/jest": "^24.0.18",
     "@types/moment": "^2.13.0",
     "@types/node": "^12.7.12",
+    "@types/supertest": "^2.0.8",
     "@types/uuid": "^3.4.5",
+    "jest": "^24.9.0",
     "nodemon": "^1.19.3",
+    "supertest": "^4.0.2",
     "tslint": "^5.20.0",
     "typescript": "^3.6.3"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "testRegex": "\\.test\\.ts",
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json",
+      "node"
+    ]
   }
 }

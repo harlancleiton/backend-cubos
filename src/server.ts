@@ -1,4 +1,9 @@
-import app from './app';
-import { environment } from './environments/environment';
+import * as dotenv from 'dotenv';
 
-app.listen(environment.server.port);
+const path = `${process.env.NODE_ENV || 'development'}.env`;
+
+dotenv.config({ path });
+
+import app from './app';
+
+app.listen(process.env.PORT);

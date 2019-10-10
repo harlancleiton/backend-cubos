@@ -11,3 +11,4 @@ yarn-error.log*
 
 # JsonDB
 db.json
+db-test.json
