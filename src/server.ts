@@ -1,3 +1,4 @@
 import app from './app';
+import { environment } from './environments/environment';
 
-app.listen(3333);
+app.listen(environment.server.port);
