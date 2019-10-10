@@ -12,7 +12,7 @@ export interface Regra {
   id?: string;
   tipo: RegraTipo;
   dia?: string;
-  diasSemana?: string[];
+  diasSemana?: number[];
   inicio: string;
   fim: string;
 }
@@ -56,9 +56,33 @@ export class RegraModel {
       const inicio = moment(filter.inicio, 'DD-MM-YYYY');
       const fim = moment(filter.fim, 'DD-MM-YYYY');
       return db.filter(this.path, (regra: Regra) => {
-        // TODO corrigi para filtro funcionar com Regra do tipo SEMANAL e DIARIO
-        const dia = moment(regra.dia, 'DD-MM-YYYY');
-        return dia.isBetween(inicio, fim, 'milliseconds', '[]');
+        // TODO refatorar codigo e separar os ifs
+        if (regra.tipo === RegraTipo.DIARIO) {
+          return true;
+        } else if (regra.tipo === RegraTipo.ESPECIFICO) {
+          const dia = moment(regra.dia, 'DD-MM-YYYY');
+          return dia.isBetween(inicio, fim, 'milliseconds', '[]');
+        } else {
+          const dias: number[] = regra.diasSemana!;
+          const diff = fim.diff(inicio, 'days');
+          if (diff === 0) {
+            return dias.includes(inicio.days());
+          } else {
+            let f = fim.days();
+            const i = inicio.days();
+            if (f < i || diff > 6) {
+              f = 6;
+            }
+            let aux: boolean = false;
+            for (let x = f; x >= i; x--) {
+              if (dias.includes(x)) {
+                aux = true;
+                break;
+              }
+            }
+            return aux;
+          }
+        }
       });
     }
   }
