@@ -2,12 +2,20 @@ import { Request, Response } from 'express';
 import { Regra, regraModel } from '../models/regra.model';
 
 class RegrasController {
-  private readonly path = '/regras';
-
   public async index(req: Request, res: Response) {
     const { inicio, fim } = req.query;
-    const atendimentos = regraModel.findAll({ inicio, fim });
-    res.json({ data: atendimentos });
+    const regras = regraModel.findAll({ inicio, fim });
+    res.json({ data: regras });
+  }
+
+  public async show(req: Request, res: Response) {
+    const { id } = req.params;
+    const regra = regraModel.findById(id);
+    if (regra) {
+      res.send({ data: regra });
+    } else {
+      res.status(404).send();
+    }
   }
 
   public async store(req: Request, res: Response) {
