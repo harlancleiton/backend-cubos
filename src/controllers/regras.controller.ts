@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
-import { Regra, regraModel } from '../models/regra.model';
+import { Regra } from '../dto';
+import { regraModel } from '../models/regra.model';
 
 class RegrasController {
   public async index(req: Request, res: Response) {

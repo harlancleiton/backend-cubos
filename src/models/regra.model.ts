@@ -1,21 +1,8 @@
 import * as moment from 'moment';
 import * as uuid from 'uuid';
 import db from '../database/jsondb';
+import { Regra, RegraFiltro } from '../dto';
 import { RegraTipo } from './regra-tipo.enum';
-
-export interface RegraFiltro {
-  inicio: string;
-  fim: string;
-}
-
-export interface Regra {
-  id?: string;
-  tipo: RegraTipo;
-  dia?: string;
-  diasSemana?: number[];
-  inicio: string;
-  fim: string;
-}
 
 export class RegraModel {
   private readonly path = '/regras';
