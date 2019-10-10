@@ -56,6 +56,7 @@ export class RegraModel {
       const inicio = moment(filter.inicio, 'DD-MM-YYYY');
       const fim = moment(filter.fim, 'DD-MM-YYYY');
       return db.filter(this.path, (regra: Regra) => {
+        // TODO corrigi para filtro funcionar com Regra do tipo SEMANAL e DIARIO
         const dia = moment(regra.dia, 'DD-MM-YYYY');
         return dia.isBetween(inicio, fim, 'milliseconds', '[]');
       });
