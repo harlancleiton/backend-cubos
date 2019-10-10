@@ -8,6 +8,7 @@
     "quotemark": [true, "single", "avoid-escape", "avoid-template"],
     "space-before-function-paren": false,
     "interface-name": false,
+    "member-access": false,
     "trailing-comma": [
       true,
       {
