@@ -1,3 +1,4 @@
+import * as cors from 'cors';
 import * as express from 'express';
 import routes from './routes';
 
@@ -10,8 +11,8 @@ export class App {
     this.routes();
   }
 
-  // TODO habilitar cors
   private middlewares() {
+    this.express.use(cors());
     this.express.use(express.json());
   }
 
