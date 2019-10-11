@@ -28,7 +28,10 @@ class HorarioModel {
             horario.intervalos.push({ inicio: regra.inicio, fim: regra.fim });
           }
         } else {
-          // TODO filtrar regras do tipo semanal
+          const diaSemana = moment(dia, 'DD-MM-YYYY').days();
+          if (regra.diasSemana!.includes(diaSemana)) {
+            horario.intervalos.push({ inicio: regra.inicio, fim: regra.fim });
+          }
         }
       });
       if (horario.intervalos.length > 0) {
