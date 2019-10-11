@@ -1,6 +1,7 @@
 import * as moment from 'moment';
+import { Regra, RegraFiltro } from '../../src/dto';
 import { RegraTipo } from '../../src/models/regra-tipo.enum';
-import { Regra, RegraFiltro, regraModel } from '../../src/models/regra.model';
+import { regraModel } from '../../src/models/regra.model';
 
 describe('Regra de Atendimento', () => {
   it('Deve retornar se uma regra faz parte do filtro', () => {
