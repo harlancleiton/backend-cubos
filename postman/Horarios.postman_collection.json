@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "644ff6e8-b7cb-4f4f-88ee-dc0be2b6ea9a",
+		"name": "Horarios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Listar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/horarios?inicio=29-10-2019&fim=30-10-2019",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"horarios"
+					],
+					"query": [
+						{
+							"key": "inicio",
+							"value": "29-10-2019"
+						},
+						{
+							"key": "fim",
+							"value": "30-10-2019"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

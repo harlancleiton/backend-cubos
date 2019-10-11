@@ -7,7 +7,8 @@
   "scripts": {
     "dev:build": "node_modules/.bin/tsc -w",
     "dev": "node_modules/.bin/nodemon --delay 3 dist/server.js",
-    "test": "NODE_ENV=test jest"
+    "test": "NODE_ENV=test jest",
+    "start": "node_modules/.bin/tsc && node_modules/.bin/nodemon dist/server.js"
   },
   "repository": {
     "url": "https://github.com/harlancleiton/backend-cubos",
