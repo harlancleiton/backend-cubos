@@ -4,11 +4,24 @@
 
 ##### Instruções (yarn)
 
-<ol>
-<li>yarn</li>
-<li>yarn  start</li>
-<li>yarn test</li>
-</ol>
+1. Instalar dependências
 
-As requisições devem ser feitas na porta 3333
+```bash
+yarn
+```
+
+2. Iniciar servidor
+
+```bash
+yarn start
+```
+
+3. Executar testes
+
+```bash
+yarn test
+```
+
+###### OBS: As requisições devem ser feitas na porta 3333
+
 Exemplo: GET http://localhost:3333/regras
