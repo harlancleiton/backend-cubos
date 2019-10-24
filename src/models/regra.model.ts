@@ -57,21 +57,31 @@ export class RegraModel {
    * @returns {Regra[]} retorna um array de regras de atendimento encontradas
    */
   public findAll(filter?: RegraFiltro): Regra[] | undefined {
+    let regras;
     if (!filter || !filter.fim || !filter.inicio) {
-      return db.getData(this.path);
+      try {
+        regras = db.getData(this.path);
+      } catch (e) {
+        regras = [];
+      }
     } else {
       const inicio = moment(filter.inicio, 'DD-MM-YYYY');
       const fim = moment(filter.fim, 'DD-MM-YYYY');
-      return db.filter(this.path, (regra: Regra) => {
-        if (regra.tipo === RegraTipo.DIARIO) {
-          return this.filtrarDiario(regra);
-        } else if (regra.tipo === RegraTipo.ESPECIFICO) {
-          return this.filtrarEspecifico(regra, inicio, fim);
-        } else {
-          return this.filtrarSemanal(regra, inicio, fim);
-        }
-      });
+      try {
+        regras = db.filter(this.path, (regra: Regra) => {
+          if (regra.tipo === RegraTipo.DIARIO) {
+            return this.filtrarDiario(regra);
+          } else if (regra.tipo === RegraTipo.ESPECIFICO) {
+            return this.filtrarEspecifico(regra, inicio, fim);
+          } else {
+            return this.filtrarSemanal(regra, inicio, fim);
+          }
+        });
+      } catch (e) {
+        regras = [];
+      }
     }
+    return regras;
   }
 
   /**
