@@ -6,7 +6,12 @@ import { regraModel } from '../../models/regra.model';
 class RegrasValidator {
   store(req: Request, res: Response, next: NextFunction) {
     const dto: Regra = req.body;
-    const regras: Regra[] = regraModel.findAll()!;
+    let regras: Regra[];
+    try {
+      regras = regraModel.findAll()!;
+    } catch (e) {
+      regras = [];
+    }
     const inicio = moment(dto.inicio, 'HH:mm');
     const fim = moment(dto.fim, 'HH:mm');
 
