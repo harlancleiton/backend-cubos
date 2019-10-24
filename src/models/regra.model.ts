@@ -36,19 +36,23 @@ export class RegraModel {
    * @returns {boolean} retorna se a Regra foi encontrada e excluida
    */
   public delete(id: string): boolean {
-    const regra = db.find(
-      this.path,
-      (regraSalva: Regra, i: number | string) => {
-        if (regraSalva.id === id) {
-          const index = Number(i);
-          db.delete(`${this.path}[${index}]`);
-          return true;
-        } else {
-          return false;
+    try {
+      const regra = db.find(
+        this.path,
+        (regraSalva: Regra, i: number | string) => {
+          if (regraSalva.id === id) {
+            const index = Number(i);
+            db.delete(`${this.path}[${index}]`);
+            return true;
+          } else {
+            return false;
+          }
         }
-      }
-    );
-    return !!regra;
+      );
+      return !!regra;
+    } catch (e) {
+      return false;
+    }
   }
 
   /**
