@@ -9,3 +9,6 @@
 <li>yarn  start</li>
 <li>yarn test</li>
 </ol>
+
+As requisições devem ser feitas na porta 3333
+Exemplo: GET http://localhost:3333/regras
